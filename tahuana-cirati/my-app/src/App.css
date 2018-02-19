@@ -1,11 +1,5 @@
 .App {
-  /* text-align: center; */
   margin: auto;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
 }
 
 .App-header {
@@ -22,14 +16,6 @@
   padding: 50px;
   margin: 0 auto;
   display: table;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
 }
 
 .Input {
