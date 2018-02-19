@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header'
-
+import InputSearch from './components/InputSearch'
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +21,11 @@ class App extends Component {
 
     return (<div className="App">
       <Header data="Gotta Fetch em all!" />
-      
+      <div className="App-body">
+        <div>
+          <InputSearch updateSearch={this.updateSearch}/>
+        </div>
+      </div>
     </div>);
   }
 }
