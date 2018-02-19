@@ -13,7 +13,7 @@ import React from 'react';
 
 const InputSearch = ( {updateSearch} ) => (
     
-        <input className="Input" type='text' name='name' placeholder='Search your Pokemon...' onChange={(event) => updateSearch(event)}/>
+        <input className="Input" type='text' name='name' placeholder='Search your Pokemon by name or ID...' onChange={(event) => updateSearch(event)}/>
     
 )
 
