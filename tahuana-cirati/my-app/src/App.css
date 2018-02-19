@@ -36,6 +36,17 @@
   height: 1.3em;
 }
 
+.Button {
+  background-color: rgb(201, 58, 182);
+  color: white;
+  text-align: center;
+  font-size: 1.1em;
+  width: 8em;
+  height: 2em;
+  margin-left: 3em;
+  border-radius: 10%;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

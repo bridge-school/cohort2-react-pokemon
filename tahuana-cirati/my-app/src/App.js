@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header'
 import InputSearch from './components/InputSearch'
+import Button from './components/Button'
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class App extends Component {
       <Header data="Gotta Fetch em all!" />
       <div className="App-body">
         <div>
-          <InputSearch updateSearch={this.updateSearch}/>
+          <spam><InputSearch updateSearch={this.updateSearch}/></spam>
+          <spam><Button /></spam>
         </div>
       </div>
     </div>);

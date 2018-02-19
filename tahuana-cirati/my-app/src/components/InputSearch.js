@@ -12,9 +12,9 @@ import React from 'react';
 // }
 
 const InputSearch = ( {updateSearch} ) => (
-    <div className="App">
-                <input className="Input" type='text' name='name' placeholder='Search your Pokemon...' onChange={(event) => updateSearch(event)}/>
-            </div>
+    
+        <input className="Input" type='text' name='name' placeholder='Search your Pokemon...' onChange={(event) => updateSearch(event)}/>
+    
 )
 
 export default InputSearch;
