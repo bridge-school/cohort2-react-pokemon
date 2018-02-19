@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header'
 import InputSearch from './components/InputSearch'
 import Button from './components/Button'
+import PokemonDisplay from './components/PokemonDisplay'
 
 class App extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class App extends Component {
           <spam><InputSearch updateSearch={this.updateSearch}/></spam>
           <spam><Button /></spam>
         </div>
+        <PokemonDisplay />
       </div>
     </div>);
   }
