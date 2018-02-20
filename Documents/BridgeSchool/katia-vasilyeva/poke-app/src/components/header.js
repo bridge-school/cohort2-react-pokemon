@@ -1,5 +1,6 @@
+import React from 'react';
 
-const header = props => {
+const Header = props => {
     return <h1>Gotta Fetch em all!</h1>
 };
 
