@@ -3,3 +3,31 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.logo {
+  height: 100px;
+}
+
+.spin {
+	animation: spin infinite 5s linear;
+}
+
+.bounce {
+	animation: bounce infinite 2s linear;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+@keyframes bounce {
+  0%, 100% {transform: translateY(0);}
+  50% {transform: translateY(20px);}
+}
+
+.credit {
+	position: absolute;
+	bottom:15px;
+	font-size: .7em;
+}
