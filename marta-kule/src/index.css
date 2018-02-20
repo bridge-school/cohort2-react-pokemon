@@ -4,16 +4,25 @@ body {
   font-family: sans-serif;
 }
 
-.logo {
-  height: 100px;
+.header {
+
 }
 
-.spin {
-	animation: spin infinite 5s linear;
+.searchBar input {
+  font-size: 1em;
 }
 
-.bounce {
-	animation: bounce infinite 2s linear;
+.loader {
+
+}
+
+.errorHandler {
+
+}
+
+.loadingSpinner {
+  height: 50px;
+	animation: spin infinite 3s linear;
 }
 
 @keyframes spin {
@@ -21,9 +30,8 @@ body {
     to {transform:rotate(360deg);}
 }
 
-@keyframes bounce {
-  0%, 100% {transform: translateY(0);}
-  50% {transform: translateY(20px);}
+.displayDetail p {
+  text-transform: capitalize;
 }
 
 .credit {

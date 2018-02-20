@@ -3,7 +3,7 @@ import React from 'react';
 const SearchButton= () => {
 	return (
 		<div>
-			<button>Search</button>
+			<button onClick={console.log("clicked")}>Search</button>
 		</div>
 	);
 }
