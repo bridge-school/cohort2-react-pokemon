@@ -17,6 +17,26 @@ a pokemon based on user input and displays it.
 * Create a button component
 * Use all of the components to make an API call based on what the user input's into the component when the button is clicked
 
+### Bonus
+
+You will be updating your pokemon app to do the following two things:
+
+1. Gracefully handle errors
+
+   For example invalid searches, or what if there is no internet connection? (you can test this by turning off your wifi)
+
+2. Handle the empty input search
+
+   The pokemon API returns a list of pokemons on the results attribute when you search https://pokeapi.co/api/v2/pokemon/ ie (\`https://pokeapi.co/api/v2/pokemon/${''}\`)
+   lets have your pokemon app render something like:
+
+```<ul>
+<li>bulbasaur</li>
+<li>ivysaur</li>
+...
+</ul>
+```
+
 ### Pokemon API
 
 We'll be leveraging the `fetch` API and the [pokeapi](https://pokeapi.co/docsv2/#pokemon-section) to get our Pokemon data. You can use the `name` prop to display the name and the `pokemon.sprites.front_default` to display the picture.
