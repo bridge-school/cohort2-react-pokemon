@@ -23,19 +23,14 @@ class App extends Component {
 
     if (term.length>0){
       fetch(`https://pokeapi.co/api/v2/pokemon/${term}`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          this.setState({error:true})
-        }
-      })
-      .then(pokemonData => {
-        this.setState({
-          name: pokemonData.name,
-          imageUrl: pokemonData.sprites.front_default,
-        });
-        return pokemonData;
+      .then((response) => {return response.json();})
+      .then(data => {
+        if (!data===undefined) {
+          this.setState({
+            name: data.name,
+            imageUrl: data.sprites.front_default,
+          });          
+        } else {this.setState({error:true});}
       });      
     }
   }
