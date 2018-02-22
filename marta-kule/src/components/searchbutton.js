@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SearchButton= () => {
-	return (
+export const SearchButton = ({children, onButtonClick}) => {
+	return(
 		<div>
-			<button onClick={console.log("clicked")}>Search</button>
+			<button onClick={onButtonClick}>
+				{children}
+			</button>
 		</div>
 	);
 }
-
-export default SearchButton;

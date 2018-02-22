@@ -4,16 +4,9 @@ body {
   font-family: sans-serif;
 }
 
-.header {
-
-}
-
-.searchBar input {
+input.searchBar  {
   font-size: 1em;
-}
-
-.loader {
-
+  min-width: 300px;
 }
 
 .errorHandler {

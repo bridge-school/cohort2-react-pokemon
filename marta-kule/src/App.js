@@ -1,52 +1,62 @@
 import React, { Component } from 'react';
-import Header from "./components/header";
-import Credit from "./components/credit";
-import SearchBar from "./components/searchbar";
-import SearchButton from "./components/searchbutton";
-import Display from "./components/display";
+import {Header} from "./components/header"
+import {SearchBar} from "./components/searchbar"
+import {SearchButton} from "./components/searchbutton"
+import {Display} from "./components/display"
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      term:"eevee",
-      result:null,
-      error:false
-    }
-    this.pokeSearch(this.state.term);
+
+  constructor() {
+    super();
+    this.state={
+      searchTerm:"",
+      name:"",
+      imageUrl:"",
+      error:null
+    };
   }
 
-  pokeSearch(term) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${term}`)
+  saveSearchTerm = e => this.setState({searchTerm:(e.target.value)});
+
+  pokeSearch = e => {
+    let term = this.state.searchTerm.toLowerCase().trim();
+
+    if (term.length>0){
+      fetch(`https://pokeapi.co/api/v2/pokemon/${term}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
-        } else {this.setState({error:true})}
+        } else {
+          this.setState({error:true})
+        }
       })
-      .then( result => {
-        this.setState({result})
-      console.log(result);
-        } );
+      .then(pokemonData => {
+        this.setState({
+          name: pokemonData.name,
+          imageUrl: pokemonData.sprites.front_default,
+        });
+        return pokemonData;
+      });      
+    }
   }
 
   render() {
     return (
-      <div>
-        <Header title="Gotta Fetch em all!"/>
-        <SearchBar
-          placeholder="Search all Pokemon"
-          />
-        <SearchButton/>
+      <div className="App">
+        <Header>Gotta Fetch 'em all!</Header>
+        <SearchBar 
+          placeholder="enter lowercase name or id from 1 to 802"
+          inputValue={this.state.searchTerm}
+          onInputChange={this.saveSearchTerm}/>
+        <SearchButton onButtonClick={this.pokeSearch}>Search</SearchButton>
         <Display 
-          pokemon={this.state.result} 
-          error={this.state.error} 
-          term={this.state.term}/>
-        <Credit/>
+          error={this.state.error}
+          term = {this.state.searchTerm}
+          name={this.state.name}
+          imageUrl={this.state.imageUrl}/>
       </div>
     );
   }
 }
 
 export default App;
-
-//
