@@ -41,9 +41,10 @@ class App extends Component {
             imageUrl: data.sprites.front_default,
           });          
       })
-      .catch(err=>{
+      .catch(err => {
+        console.log(err);
         this.setState({error:rawInput});
-      });      
+      });
     }
   }
 
