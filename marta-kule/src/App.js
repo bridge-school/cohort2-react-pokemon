@@ -12,25 +12,37 @@ class App extends Component {
       searchTerm:"",
       name:"",
       imageUrl:"",
-      error:null
+      error:null,
+      loading:false
     };
   }
 
   saveSearchTerm = e => this.setState({searchTerm:(e.target.value)});
 
   pokeSearch = e => {
-    let term = this.state.searchTerm.toLowerCase().trim();
+      let rawInput = this.state.searchTerm;
+      let term = rawInput.toLowerCase().trim();
 
     if (term.length>0){
+
+      this.setState({
+        error:null,
+        loading:true
+      });
+
       fetch(`https://pokeapi.co/api/v2/pokemon/${term}`)
-      .then((response) => {return response.json();})
+      .then((response) => {
+        this.setState({loading:false});        
+        return response.json();
+      })
       .then(data => {
-        if (!data===undefined) {
           this.setState({
             name: data.name,
             imageUrl: data.sprites.front_default,
           });          
-        } else {this.setState({error:true});}
+      })
+      .catch(err=>{
+        this.setState({error:rawInput});
       });      
     }
   }
@@ -40,13 +52,13 @@ class App extends Component {
       <div className="App">
         <Header>Gotta Fetch 'em all!</Header>
         <SearchBar 
-          placeholder="enter lowercase name or id from 1 to 802"
+          placeholder="Enter name or id from 1 to 802"
           inputValue={this.state.searchTerm}
           onInputChange={this.saveSearchTerm}/>
         <SearchButton onButtonClick={this.pokeSearch}>Search</SearchButton>
         <Display 
+          loading={this.state.loading}
           error={this.state.error}
-          term = {this.state.searchTerm}
           name={this.state.name}
           imageUrl={this.state.imageUrl}/>
       </div>
