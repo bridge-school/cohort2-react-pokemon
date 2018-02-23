@@ -36,18 +36,17 @@ class App extends Component {
 
   fetchPokemon = idOrName =>
     fetch(`https://pokeapi.co/api/v2/pokemon/${idOrName && idOrName}`)
-      .then(response => response.json())
-      .then(
-        pokemonData => (pokemonData.name ?
-          ({
-            name: pokemonData.name,
-            picture: pokemonData.sprites.front_default
-          }) :
-          ({ pokemonList: pokemonData.results })
-        ))
+      .then(response => response.ok ? response.json() : this.handleError(response))
+      .then(pokemonData => pokemonData && (pokemonData.name ?
+        ({
+          name: pokemonData.name,
+          picture: pokemonData.sprites.front_default
+        }) :
+        ({ pokemonList: pokemonData.results })
+      ))
       .catch(error => this.handleError(error))
 
-  handleError = error => console.log("ERROR: ", error.message);
+  handleError = error => console.log("ERROR: ", error.status ? error.status : error.message);
 
   render() {
     // console.log("on render", JSON.stringify(this.state));
