@@ -6,20 +6,6 @@ import FilterButton from './components/FilterButton'
 import PokemonCard from './components/PokemonCard'
 import PokemonList from "./components/PokemonList";
 
-// use this to fetch data
-const fetchPokemon = idOrName =>
-  fetch(`https://pokeapi.co/api/v2/pokemon/${idOrName && idOrName}`)
-    .then(response => response.json())
-    .then(
-      pokemonData => (pokemonData.name ?
-        ({
-          name: pokemonData.name,
-          picture: pokemonData.sprites.front_default
-        }) :
-        ({ pokemonList: pokemonData.results })
-      ))
-    .catch(error => console.error("ERROR", error))
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -35,30 +21,44 @@ class App extends Component {
   }
 
   changeFilter = ev => this.setState({ filter: ev.target.value })
-  getPokemon = pokemon => fetchPokemon(pokemon).then(
+
+  getPokemon = pokemon => this.fetchPokemon(pokemon).then(
     result => {
-      console.log(result)
-      if (result.pokemonList) {
-        this.clearSelected()
-        this.setState({ pokemonList: result.pokemonList })
+      if (result) {
+        if (result.pokemonList) {
+          this.setState({ pokemonSelected: {}, pokemonList: result.pokemonList })
+        }
+        else {
+          this.setState({ pokemonSelected: result, filter: result.name })
+        }
       }
-      else {
-        this.setState({ pokemonSelected: result })
-      }
-    }
-  );
-  clearSelected = () => this.setState({ pokemonSelected: {} })
+    });
+
+  fetchPokemon = idOrName =>
+    fetch(`https://pokeapi.co/api/v2/pokemon/${idOrName && idOrName}`)
+      .then(response => response.json())
+      .then(
+        pokemonData => (pokemonData.name ?
+          ({
+            name: pokemonData.name,
+            picture: pokemonData.sprites.front_default
+          }) :
+          ({ pokemonList: pokemonData.results })
+        ))
+      .catch(error => this.handleError(error))
+
+  handleError = error => console.log("ERROR: ", error.message);
 
   render() {
-    console.log("on render", JSON.stringify(this.state));
+    // console.log("on render", JSON.stringify(this.state));
     const { filter, pokemonSelected, pokemonList } = this.state
 
-    let data = null;
+    let data;
     if (pokemonSelected.name) {
       data = <PokemonCard name={pokemonSelected.name} spriteSrc={pokemonSelected.picture} />
     }
     else if (pokemonList.length > 0) {
-      data = <PokemonList pokemonList={pokemonList} />
+      data = <PokemonList pokemonList={pokemonList} getPokemonDetails={pokemon => this.getPokemon(pokemon)} />
     }
 
     return (
