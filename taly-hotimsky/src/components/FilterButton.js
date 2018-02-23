@@ -1,8 +1,8 @@
 import React from 'react';
 
-const FilterButton = props => {
+const FilterButton = ({ onClick, children }) => {
     return (
-        <button onClick={props.onClick}>Filter</button>
+        <button onClick={onClick}>{children}</button>
     );
 };
 

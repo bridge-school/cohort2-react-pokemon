@@ -4,15 +4,21 @@ import Header from './components/Header'
 import FilterInput from './components/FilterInput'
 import FilterButton from './components/FilterButton'
 import PokemonCard from './components/PokemonCard'
+import PokemonList from "./components/PokemonList";
 
 // use this to fetch data
 const fetchPokemon = idOrName =>
-  fetch(`https://pokeapi.co/api/v2/pokemon/${idOrName}`)
+  fetch(`https://pokeapi.co/api/v2/pokemon/${idOrName && idOrName}`)
     .then(response => response.json())
-    .then(pokemonData => ({
-      name: pokemonData.name,
-      picture: pokemonData.sprites.front_default
-    }));
+    .then(
+      pokemonData => (pokemonData.name ?
+        ({
+          name: pokemonData.name,
+          picture: pokemonData.sprites.front_default
+        }) :
+        ({ pokemonList: pokemonData.results })
+      ))
+    .catch(error => console.error("ERROR", error))
 
 class App extends Component {
   constructor(props) {
@@ -23,25 +29,47 @@ class App extends Component {
         name: '',
         picture: ''
       },
-      filter: ''
+      filter: '',
+      pokemonList: {}
     }
   }
 
   changeFilter = ev => this.setState({ filter: ev.target.value })
-  getPokemon = (pokemon) => fetchPokemon(pokemon).then(result => this.setState({ pokemonSelected: result }))
+  getPokemon = pokemon => fetchPokemon(pokemon).then(
+    result => {
+      console.log(result)
+      if (result.pokemonList) {
+        this.clearSelected()
+        this.setState({ pokemonList: result.pokemonList })
+      }
+      else {
+        this.setState({ pokemonSelected: result })
+      }
+    }
+  );
+  clearSelected = () => this.setState({ pokemonSelected: {} })
 
   render() {
-    const { name, picture } = this.state.pokemonSelected
-    const { filter } = this.state
+    console.log("on render", JSON.stringify(this.state));
+    const { filter, pokemonSelected, pokemonList } = this.state
+
+    let data = null;
+    if (pokemonSelected.name) {
+      data = <PokemonCard name={pokemonSelected.name} spriteSrc={pokemonSelected.picture} />
+    }
+    else if (pokemonList.length > 0) {
+      data = <PokemonList pokemonList={pokemonList} />
+    }
 
     return (
       <div>
         <Header title="Gotta Fetch em all!" />
         <FilterInput value={filter} onChange={this.changeFilter} />
-        <FilterButton onClick={() => this.getPokemon(filter)} />
-        <PokemonCard name={name} spriteSrc={picture} />
+        <FilterButton onClick={() => this.getPokemon(filter)}>Get!</FilterButton>
+        {data}
       </div>
     )
+
   }
 }
 
