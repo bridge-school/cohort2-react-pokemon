@@ -5,11 +5,11 @@ a pokemon based on user input and displays it.
 
 ### Setup
 
-1. Fork this repo
-2. Create a folder with your first and last name (e.g. `arya-stark`)
-3. Run `create-react-app` in that folder. This is where your app will live.
+1.  Fork this repo
+2.  Create a folder with your first and last name (e.g. `arya-stark`)
+3.  Run `create-react-app` in that folder. This is where your app will live.
 
-### Assignment
+### Assignment - Part 1
 
 * Create a header component that should read `Gotta Fetch em all!` through props
 * Create a Pokemon display component that displays the image of the Pokemon and it's name
@@ -21,14 +21,14 @@ a pokemon based on user input and displays it.
 
 You will be updating your pokemon app to do the following two things:
 
-1. Gracefully handle errors
+1.  Gracefully handle errors
 
-   For example invalid searches, or what if there is no internet connection? (you can test this by turning off your wifi)
+    For example invalid searches, or what if there is no internet connection? (you can test this by turning off your wifi)
 
-2. Handle the empty input search
+2.  Handle the empty input search
 
-   The pokemon API returns a list of pokemons on the results attribute when you search https://pokeapi.co/api/v2/pokemon/ ie (\`https://pokeapi.co/api/v2/pokemon/${''}\`)
-   lets have your pokemon app render something like:
+    The pokemon API returns a list of pokemons on the results attribute when you search https://pokeapi.co/api/v2/pokemon/ ie (\`https://pokeapi.co/api/v2/pokemon/${''}\`)
+    lets have your pokemon app render something like:
 
 ```<ul>
 <li>bulbasaur</li>
@@ -36,6 +36,14 @@ You will be updating your pokemon app to do the following two things:
 ...
 </ul>
 ```
+
+### Assignment - Part 2
+
+## Complete part 1 with:
+
+* Redux thunk middleware to handle pokemon api requests
+* Use redux to store all application state. ie do not use React's native setState method
+* Your solution can build off your original work, or you can create this app from scratch. If it is from scratch, it should have all the criteria of Part 1 and Part 2 (bonus is not necessary)
 
 ### Pokemon API
 
