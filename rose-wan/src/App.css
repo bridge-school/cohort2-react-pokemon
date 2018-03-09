@@ -1,0 +1,58 @@
+.App {
+  text-align: center;
+  top: 30%;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  background: #ecf0f1;
+}
+
+.input-field, .submit-button {
+  margin-left: 10px;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+.input-field {
+  width: 30%;
+}
+
+.display-name, .display-image {
+  margin: 10px 0 10px 0;
+  font-size: 30px;
+}
+
+.display-image {
+  width: 250px;
+}
+
+.header  {
+  color: red;
+  font-size: 45px;
+}
+
+.header2 {
+  font-size: 35px;
+}
+
+
+ul li {
+  list-style:none;
+}
+
+
+
+/* POKEBALL LOADING SYMBOL STYLING */
+.pokeball {
+  animation: pokeball-spin infinite 10s linear;
+  height: 80px;
+}
+@keyframes pokeball-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
