@@ -24,7 +24,7 @@ class App extends Component {
     .then((res) => res.json())
     .then(res => {
         this.setState({
-          name: res.name,
+          name: res.name.charAt(0).toUpperCase() + res.name.slice(1),
           picture: res.sprites && res.sprites.front_default
         });
     });
