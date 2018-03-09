@@ -1,34 +1,41 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Header } from './Components/header';
-// import { Input } from './Components/input';
+import { PokeCard } from './Components/pokecard';
+import Form from './Components/form';
+const fetch = require('node-fetch');
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''}
+    this.state = {
+      name: '',
+      picture: ''
+    }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  handleChange = (event) => {
-    this.setState({value: event.target.value})
+  handleFormSubmit = (name) => {
+    this.fetchPokemon(name);
   }
 
-  handleSubmit = (event) => {
-    alert(`An event was submitted with ${this.state.value}`);
-    console.log(this.state.value);
-    event.preventDefault();
+  fetchPokemon = (idOrName) => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${idOrName}`)
+    .then((res) => res.json())
+    .then(res => {
+        this.setState({
+          name: res.name,
+          picture: res.sprites && res.sprites.front_default
+        });
+    });
   }
 
   render() {
     return (
       <div className="App">
         <Header>Gotta Catch 'Em All!</Header>
-        <form onSubmit={this.handleSubmit}>
-            <label>
-                <input type="text" value={this.state.value} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-        </form>
+        <Form handleFormSubmit={this.handleFormSubmit}/>
+        <PokeCard name={this.state.name} picture={this.state.picture}/>
       </div>
     );
   }
