@@ -10,7 +10,8 @@ class App extends Component {
     super(props);
     this.state = {
       name: '',
-      picture: ''
+      picture: '',
+      error: ''
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
@@ -21,12 +22,29 @@ class App extends Component {
 
   fetchPokemon = (idOrName) => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${idOrName}`)
-    .then((res) => res.json())
     .then(res => {
-        this.setState({
-          name: res.name.charAt(0).toUpperCase() + res.name.slice(1),
-          picture: res.sprites && res.sprites.front_default
-        });
+      console.log(res.status);
+      if (res.status >= 200 && res.status < 400) {
+        return res;
+    } else {
+      var err = new Error("We can't seem to find a pokemon with that name or number.")
+      throw err;
+    }
+    })
+    .then(res => res.json())
+    .then(res => {
+      return this.setState({
+        name: res.name,
+        picture: res.sprites && res.sprites.front_default,
+        error: ''
+      });
+    })
+    .catch(err => {
+        this.setState({ 
+          name: '',
+          picture: '',
+          error: err.message
+      });
     });
   }
 
@@ -36,6 +54,9 @@ class App extends Component {
         <Header>Gotta Catch 'Em All!</Header>
         <Form handleFormSubmit={this.handleFormSubmit}/>
         <PokeCard name={this.state.name} picture={this.state.picture}/>
+        <div className="error-text">
+          {this.state.error}
+        </div>
       </div>
     );
   }
