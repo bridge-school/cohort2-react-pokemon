@@ -1,25 +1,65 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  margin: auto;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: rgb(201, 58, 182);
+  height: 60px;
   padding: 20px;
   color: white;
-}
-
-.App-title {
+  text-align: center;
   font-size: 1.5em;
+  line-height: 60px;   
 }
 
-.App-intro {
-  font-size: large;
+.App-body {
+  padding: 50px;
+  margin: 0 auto;
+  display: table;
+}
+
+.Input {
+  font-size: 1.1em;
+  width: 20em;
+  height: 1.3em;
+}
+
+.Button {
+  background-color: rgb(201, 58, 182);
+  color: white;
+  text-align: center;
+  font-size: 1.1em;
+  width: 8em;
+  height: 2em;
+  margin-left: 3em;
+  border-radius: 10%;
+}
+
+.PokemonDisplay {
+  border: 0.2em solid rgb(201, 58, 182);
+  background-color: rgb(247, 212, 240);
+  width: 20em;
+  margin: 3em 7em; 
+}
+
+.Labels {
+  margin: 2em 2em 1em;
+  font-weight: bold; 
+}
+
+.NameDetails {
+  margin: 1em 4em 2em;
+  height: 1.5em;
+}
+
+.PictureDetails {
+  margin: 0 4em;
+  height: 10em;
+}
+
+.PictureSize {
+  width: 80%;
+  height: auto;
 }
 
 @keyframes App-logo-spin {
