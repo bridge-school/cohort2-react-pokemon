@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import Header from './components/Header';
+import InputSearch from './components/InputSearch';
 import updateHeaderAction from './actions/header-action';
 
 class App extends Component {
@@ -14,19 +15,20 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="App-body">
+          <InputSearch />
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  header: state.header,
-  inputSearch: state.inputSearch,
-  pokemonList: state.pokemonList
-})
+const mapStateToProps = store => { 
+  return ({
+  header: store.header,
+  inputSearch: store.inputSearch,
+  pokemonList: store.pokemonList
+})}
 
 const mapDispatchToProps = {
   updateHeader: updateHeaderAction

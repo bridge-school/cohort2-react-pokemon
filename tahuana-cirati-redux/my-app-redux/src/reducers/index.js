@@ -4,14 +4,16 @@ import inputSearchReducer from './input-search-reducer'
 import pokemonListReducer from './pokemon-list-reducer'
 
 export const INITIAL_STATE = {
-    header: '',
-    inputSearch: '',
-    pokemonList: {}
+    header: "",
+    inputSearch: "",
+    pokemonList: []
 };
 
-export default combineReducers({
+const allReducers = combineReducers({
     header: headerReducer,
     inputSearch: inputSearchReducer,
     pokemonList: pokemonListReducer,
 });
+
+export default allReducers;
 
