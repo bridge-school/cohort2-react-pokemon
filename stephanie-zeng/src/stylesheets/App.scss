@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$theme-red: #E24D51;
+$theme-white: #eee;
+$theme-grey: #777;
+$theme-black: #333;
+
+body {
+  font-family: Helvetica, 'Roboto', Arial, sans-serif;
+  color: $theme-grey;
+}
+
+img {
+  width: 100%;
+}
+
+.Header {
+  background-color: $theme-red;
+  color: $theme-white;
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: lighter;
+  }
+}
+
+.SearchBar {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+
+  input {
+    padding: 0.4rem;
+    outline: none;
+  }
+
+  input[type="text"] {
+    flex: 2;
+    margin-right: 0.6rem;
+    border-color: $theme-grey;
+    border-width: 2px;
+  }
+
+  button {
+    padding: 0.4rem;
+    outline: none;
+    flex: 1;
+    background-color: $theme-red;
+    color: #fff;
+    border-color: $theme-red;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+.PokeList {
+  font-size: 1.2rem;
+  display: flex;
+  max-width: 1300px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+
+  li {
+    list-style: none;
+    min-width: 250px;
+    min-height: 230px;
+    border: 1px solid $theme-grey;
+    background-color: #eee;
+    color: $theme-black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+}
+
+.Card {
+  max-width: 400px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 2rem 0;
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  &__msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    font-size: 1.4rem;
+    color: $theme-red;
+  }
+
+  &__image {
+    background-color: $theme-white;
+    border-radius: 4px;
+  }
+}
+
+.Footer {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0.8rem;
+  text-align: center;
+  background-color: $theme-black;
+  color: #fff;
+  h3 {
+    font-size: 1rem;
+    font-weight: lighter;
+  }
+}
