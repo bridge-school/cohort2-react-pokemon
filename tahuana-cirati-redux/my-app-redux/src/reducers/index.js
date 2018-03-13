@@ -1,18 +1,18 @@
 import { combineReducers } from 'redux';
 import headerReducer from './header-reducer'
 import inputSearchReducer from './input-search-reducer'
-import pokemonListReducer from './pokemon-list-reducer'
+import buttonReducer from './button-reducer'
 
 export const INITIAL_STATE = {
     header: "",
     inputSearch: "",
-    pokemonList: []
+    pokemonList: {}
 };
 
 const allReducers = combineReducers({
     header: headerReducer,
     inputSearch: inputSearchReducer,
-    pokemonList: pokemonListReducer,
+    pokemonList: buttonReducer,
 });
 
 export default allReducers;
