@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import InputSearch from './components/InputSearch';
 import Button from './components/Button';
+import PokemonDisplay from './components/PokemonDisplay' 
 import updateHeaderAction from './actions/header-action';
 
 class App extends Component {
@@ -14,13 +15,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
-        <div className="App-body">
+      <div className="App" >
+      <Header />
+      <div className="App-body">
+        <div>
           <InputSearch />
           <Button />
         </div>
+        <PokemonDisplay />
       </div>
+    </div>
     );
   }
 }

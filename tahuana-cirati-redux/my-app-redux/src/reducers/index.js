@@ -6,7 +6,10 @@ import buttonReducer from './button-reducer'
 export const INITIAL_STATE = {
     header: "",
     inputSearch: "",
-    pokemonList: {}
+    pokemonList: {
+        name: "",
+        picture: ""
+    }
 };
 
 const allReducers = combineReducers({
