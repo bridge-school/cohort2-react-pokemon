@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.App, .App * {
+  text-align: center;
+}
+
+input.searchBar  {
+  font-size: 1em;
+  width:70%;
+  min-width: 300px;
+  height:2em;
+  margin-bottom: 10px;
+  border-radius:7px;
+}
+
+.SearchButton {
+  font-size: 1em;
+  padding: 5px 10px;
+  border-radius: 7px;
+}
+
+.errorHandler {
+  border:none;
+  border-radius:7px;
+  color:#cc0000;
+  background-color: #f9beb7;
+  margin:2em;
+  padding: 10px;
+  line-height: 1.5;
+}
+
+.loader {
+  margin:2em;
+}
+
+.loadingSpinner {
+  height: 50px;
+	animation: spin infinite 1s linear;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.displayDetail p {
+  text-transform: capitalize;
+}
+
+.credit {
+	position: absolute;
+	bottom:15px;
+	font-size: .7em;
+}
+
+.Capital {
+  text-transform: capitalize;
+}
